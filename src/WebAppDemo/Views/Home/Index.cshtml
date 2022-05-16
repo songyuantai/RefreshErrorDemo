@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@section scripts{ 
+    <script>
+        //export table to excle file
+        function saveAsExcle()
+        {
+            //replace error 
+            const html = "<html><head><meta charset='utf-8' /></head><body>" + document.getElementsByTagName("table")[0].outerHTML + "</body></html>";
+
+            const blob = new Blob([html], { type: "application/vnd.ms-excel" });
+
+            const download = document.createElement('a');
+
+            download.href = URL.createObjectURL(blob);
+
+            download.download = 'demo.xls';
+
+            download.click();
+
+            URL.revokeObjectURL(download.href);
+        }
+    </script>
+}
+<div class="p-1 d-flex justify-content-between">
+    <div>
+        <h4>Refresh error in js code</h4>
+    </div>
+    <div>
+        <button onclick="saveAsExcle();" class="btn btn-primary">Export</button>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>twitter</td>
+        </tr>
+    </tbody>
+</table>
